@@ -43,6 +43,7 @@ COPY ./supervisor/config.conf /etc/supervisor/conf.d/supervisord.conf
 # Test PHP ver
 COPY ./php/index.php /var/www/app/index.php
 
+
 EXPOSE 80
 
 # Let supervisord start nginx & php-fpm
