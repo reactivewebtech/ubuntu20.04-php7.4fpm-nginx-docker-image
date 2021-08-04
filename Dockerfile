@@ -1,8 +1,8 @@
 # Using base ubuntu image
 FROM ubuntu:20.04
 
-LABEL Maintainer="Roman Dulman" \
-      Description="Nginx + PHP7.4-FPM Based on Ubuntu 20.04."
+LABEL Maintainer="Roman Dulman - RWT" \
+      Description="Nginx + PHP7.4-FPM Based on Ubuntu 20.04"
 
 # Setup document root
 RUN mkdir -p /var/www/app
@@ -12,14 +12,15 @@ RUN mkdir -p /var/www/app
 RUN apt update --fix-missing
 RUN  DEBIAN_FRONTEND=noninteractive
 
-RUN  apt get update && apt get upgrade -y
+RUN  apt update && apt upgrade -y
 
 RUN apt install git zip unzip curl gnupg2 ca-certificates lsb-release libicu-dev supervisor nginx -y
 
-RUN  apt get update && apt get upgrade -y
+RUN  apt update && apt upgrade -y
 
 # Install php7.4-fpm
 # Since the repo is supported on ubuntu 20 +
+RUN ln -snf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && echo Asia/Jerusalem > /etc/timezone
 RUN apt install php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath php-intl -y
 
 # Install composer
