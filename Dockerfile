@@ -11,7 +11,12 @@ RUN mkdir -p /var/www/app
 # Base install
 RUN apt update --fix-missing
 RUN  DEBIAN_FRONTEND=noninteractive
+
+RUN  apt get update && apt get upgrade -y
+
 RUN apt install git zip unzip curl gnupg2 ca-certificates lsb-release libicu-dev supervisor nginx -y
+
+RUN  apt get update && apt get upgrade -y
 
 # Install php7.4-fpm
 # Since the repo is supported on ubuntu 20 +
