@@ -13,14 +13,13 @@ RUN apt update --fix-missing
 RUN  DEBIAN_FRONTEND=noninteractive
 
 RUN  apt update && apt upgrade -y
-
+RUN ln -snf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && echo Asia/Jerusalem > /etc/timezone
 RUN apt install git zip unzip curl gnupg2 ca-certificates lsb-release libicu-dev supervisor nginx -y
 
 RUN  apt update && apt upgrade -y
 
 # Install php7.4-fpm
 # Since the repo is supported on ubuntu 20 +
-RUN ln -snf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && echo Asia/Jerusalem > /etc/timezone
 RUN apt install php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath php-intl -y
 
 # Install composer
