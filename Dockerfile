@@ -46,14 +46,14 @@ COPY ./php/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./nginx/server.conf /etc/nginx/sites-enabled/default.conf
 COPY ./supervisor/config.conf /etc/supervisor/conf.d/supervisord.conf
 
-#WORKDIR /var/www/app
+WORKDIR /var/www/app
 
-RUN cd /var/www/app &&  composer require predis/predis
-RUN cd /var/www/app &&  composer require firebase/php-jwt
-RUN cd /var/www/app &&  composer require nesbot/carbon
-RUN cd /var/www/app &&  composer require nesbot/carbon
-RUN cd /var/www/app &&  composer require guzzlehttp/guzzle
-RUN cd /var/www/app &&  composer update
+RUN composer require predis/predis
+RUN omposer require firebase/php-jwt
+RUN composer require nesbot/carbon
+RUN composer require nesbot/carbon
+RUN composer require guzzlehttp/guzzle
+RUN composer update
 # Test PHP ver
 #COPY ./php/index.php /var/www/app/index.php
 
