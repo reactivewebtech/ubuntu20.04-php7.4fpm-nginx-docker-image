@@ -16,11 +16,17 @@ RUN  apt update && apt upgrade -y
 RUN ln -snf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && echo Asia/Jerusalem > /etc/timezone
 RUN apt install git zip unzip curl gnupg2 ca-certificates lsb-release libicu-dev supervisor nginx -y
 
-RUN  apt update && apt upgrade -y
+
 
 # Install php7.4-fpm
 # Since the repo is supported on ubuntu 20 +
 RUN apt install php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath php-intl -y
+
+RUN apt install php-redis -y
+
+RUN apt update && apt upgrade -y
+
+RUN phpenmod -v 7.4 -s ALL redis
 
 # Install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -40,8 +46,16 @@ COPY ./php/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./nginx/server.conf /etc/nginx/sites-enabled/default.conf
 COPY ./supervisor/config.conf /etc/supervisor/conf.d/supervisord.conf
 
+#WORKDIR /var/www/app
+
+RUN cd /var/www/app &&  composer require predis/predis
+RUN cd /var/www/app &&  composer require firebase/php-jwt
+RUN cd /var/www/app &&  composer require nesbot/carbon
+RUN cd /var/www/app &&  composer require nesbot/carbon
+RUN cd /var/www/app &&  composer require guzzlehttp/guzzle
+
 # Test PHP ver
-COPY ./php/index.php /var/www/app/index.php
+#COPY ./php/index.php /var/www/app/index.php
 
 
 EXPOSE 80
