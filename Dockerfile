@@ -24,6 +24,8 @@ RUN apt install php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring p
 
 RUN apt install php-redis -y
 
+RUN rm -rf /var/lib/apt/lists/*
+
 RUN apt update && apt upgrade -y
 
 RUN phpenmod -v 7.4 -s ALL redis
