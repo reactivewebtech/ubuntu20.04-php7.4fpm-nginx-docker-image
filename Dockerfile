@@ -1,4 +1,4 @@
-# Using base ubuntu image
+
 FROM ubuntu:20.04
 
 LABEL Maintainer="Roman Dulman - RWT" \
