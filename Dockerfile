@@ -53,7 +53,7 @@ RUN cd /var/www/app &&  composer require firebase/php-jwt
 RUN cd /var/www/app &&  composer require nesbot/carbon
 RUN cd /var/www/app &&  composer require nesbot/carbon
 RUN cd /var/www/app &&  composer require guzzlehttp/guzzle
-
+RUN cd /var/www/app &&  composer update
 # Test PHP ver
 #COPY ./php/index.php /var/www/app/index.php
 
