@@ -56,7 +56,6 @@ WORKDIR /var/www/app
 RUN composer require predis/predis
 RUN composer require firebase/php-jwt
 RUN composer require nesbot/carbon
-RUN composer require nesbot/carbon
 RUN composer require guzzlehttp/guzzle
 RUN composer update
 # Test PHP ver
