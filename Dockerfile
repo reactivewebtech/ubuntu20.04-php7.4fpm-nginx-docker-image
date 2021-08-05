@@ -49,7 +49,7 @@ COPY ./supervisor/config.conf /etc/supervisor/conf.d/supervisord.conf
 WORKDIR /var/www/app
 
 RUN composer require predis/predis
-RUN omposer require firebase/php-jwt
+RUN composer require firebase/php-jwt
 RUN composer require nesbot/carbon
 RUN composer require nesbot/carbon
 RUN composer require guzzlehttp/guzzle
