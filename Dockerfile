@@ -24,7 +24,7 @@ RUN apt install php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring p
 
 RUN apt install php-redis -y
 
-RUN rm -rf /var/lib/apt/lists/*
+#RUN rm -rf /var/lib/apt/lists/*
 
 RUN apt update && apt upgrade -y
 
@@ -47,6 +47,9 @@ COPY ./php/php.ini /etc/php/7.4/fpm/php.ini
 COPY ./php/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./nginx/server.conf /etc/nginx/sites-enabled/default.conf
 COPY ./supervisor/config.conf /etc/supervisor/conf.d/supervisord.conf
+
+RUN rm -rf /var/lib/apt/lists/*
+
 
 WORKDIR /var/www/app
 
