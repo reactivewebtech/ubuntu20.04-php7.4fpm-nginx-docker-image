@@ -53,11 +53,11 @@ RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/app
 
-RUN composer require predis/predis
-RUN composer require firebase/php-jwt
-RUN composer require nesbot/carbon
-RUN composer require guzzlehttp/guzzle
-RUN composer update
+#RUN composer require predis/predis
+#RUN composer require firebase/php-jwt
+#RUN composer require nesbot/carbon
+#RUN composer require guzzlehttp/guzzle
+#RUN composer update
 # Test PHP ver
 #COPY ./php/index.php /var/www/app/index.php
 
