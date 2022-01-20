@@ -16,6 +16,9 @@ RUN  apt update && apt upgrade -y
 RUN ln -snf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && echo Asia/Jerusalem > /etc/timezone
 RUN apt install git zip unzip curl gnupg2 ca-certificates lsb-release libicu-dev supervisor nginx -y
 
+RUN apt-get update && apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN printf "\n" | pecl install imagick
+RUN docker-php-ext-enable imagick
 
 
 # Install php7.4-fpm
@@ -43,10 +46,10 @@ RUN chmod +x ./entrypoint.sh
 
 RUN rm /etc/nginx/sites-enabled/default
 
-COPY ./php/php.ini /etc/php/7.4/fpm/php.ini
-COPY ./php/www.conf /etc/php/7.4/fpm/pool.d/www.conf
-COPY ./nginx/server.conf /etc/nginx/sites-enabled/default.conf
-COPY ./supervisor/config.conf /etc/supervisor/conf.d/supervisord.conf
+#COPY ./php/php.ini /etc/php/7.4/fpm/php.ini
+#COPY ./php/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+#COPY ./nginx/server.conf /etc/nginx/sites-enabled/default.conf
+#COPY ./supervisor/config.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN rm -rf /var/lib/apt/lists/*
 
