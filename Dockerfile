@@ -12,7 +12,12 @@ RUN mkdir -p /var/www/app
 RUN apt update --fix-missing
 RUN  DEBIAN_FRONTEND=noninteractive
 
-RUN  apt update && apt upgrade -y
+RUN apt update && apt upgrade -y
+
+RUN apt install php-pear php-dev
+
+RUN apt update && apt upgrade -y
+
 RUN ln -snf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && echo Asia/Jerusalem > /etc/timezone
 RUN apt install git zip unzip curl gnupg2 ca-certificates lsb-release libicu-dev supervisor nginx -y
 
