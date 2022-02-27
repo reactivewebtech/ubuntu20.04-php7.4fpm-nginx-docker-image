@@ -24,7 +24,9 @@ RUN apt install git zip unzip curl gnupg2 ca-certificates lsb-release libicu-dev
 RUN apt-get update && apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*
 RUN printf "\n" | pecl install imagick
 RUN docker-php-ext-enable imagick
-
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt install python3.9
+RUN apt install python3-pip
 
 # Install php7.4-fpm
 # Since the repo is supported on ubuntu 20 +
