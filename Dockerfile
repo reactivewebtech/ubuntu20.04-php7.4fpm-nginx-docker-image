@@ -1,5 +1,5 @@
 
-FROM ubuntu:20.04
+FROM ubuntu:impish-20211015
 
 LABEL Maintainer="Roman Dulman - RWT" \
       Description="Nginx + PHP7.4-FPM Based on Ubuntu 20.04"
@@ -12,10 +12,15 @@ RUN mkdir -p /var/www/app
 RUN apt update --fix-missing
 RUN  DEBIAN_FRONTEND=noninteractive
 
-RUN  apt update && apt upgrade -y
-RUN ln -snf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && echo Asia/Jerusalem > /etc/timezone
-RUN apt install git zip unzip curl gnupg2 ca-certificates lsb-release libicu-dev supervisor nginx -y
+RUN apt update && apt upgrade -y
 
+RUN apt install php-pear php-dev
+
+RUN apt update && apt upgrade -y
+
+RUN ln -snf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && echo Asia/Jerusalem > /etc/timezone
+RUN apt install git zip unzip curl gnupg2 ca-certificates software-properties-common lsb-release libicu-dev supervisor nginx -y
+RUN add-apt-repository ppa:ondrej/php
 
 
 # Install php7.4-fpm
