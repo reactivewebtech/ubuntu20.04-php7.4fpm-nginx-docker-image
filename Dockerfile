@@ -1,5 +1,5 @@
 
-FROM ubuntu:impish-20211015
+FROM ubuntu:impish
 
 LABEL Maintainer="Roman Dulman - RWT" \
       Description="Nginx + PHP7.4-FPM Based on Ubuntu 20.04"
